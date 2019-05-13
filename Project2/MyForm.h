@@ -104,10 +104,12 @@ namespace Project2
             // 
             // menuStrip1
             // 
+            this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
             this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->fileToolStripMenuItem });
             this->menuStrip1->Location = System::Drawing::Point(0, 0);
             this->menuStrip1->Name = L"menuStrip1";
-            this->menuStrip1->Size = System::Drawing::Size(864, 24);
+            this->menuStrip1->Padding = System::Windows::Forms::Padding(8, 2, 0, 2);
+            this->menuStrip1->Size = System::Drawing::Size(1152, 27);
             this->menuStrip1->TabIndex = 0;
             this->menuStrip1->Text = L"menuStrip1";
             // 
@@ -115,13 +117,13 @@ namespace Project2
             // 
             this->fileToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->loadEquationsToolStripMenuItem });
             this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-            this->fileToolStripMenuItem->Size = System::Drawing::Size(38, 20);
+            this->fileToolStripMenuItem->Size = System::Drawing::Size(45, 23);
             this->fileToolStripMenuItem->Text = L"File";
             // 
             // loadEquationsToolStripMenuItem
             // 
             this->loadEquationsToolStripMenuItem->Name = L"loadEquationsToolStripMenuItem";
-            this->loadEquationsToolStripMenuItem->Size = System::Drawing::Size(162, 22);
+            this->loadEquationsToolStripMenuItem->Size = System::Drawing::Size(192, 26);
             this->loadEquationsToolStripMenuItem->Text = L"Load Equations";
             this->loadEquationsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::loadEquationsToolStripMenuItem_Click);
             // 
@@ -141,22 +143,25 @@ namespace Project2
             this->tableLayoutPanel1->Controls->Add(this->EquationGroupBox, 0, 0);
             this->tableLayoutPanel1->Controls->Add(this->tableLayoutPanel2, 0, 1);
             this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->tableLayoutPanel1->Location = System::Drawing::Point(0, 24);
+            this->tableLayoutPanel1->Location = System::Drawing::Point(0, 27);
+            this->tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
             this->tableLayoutPanel1->RowCount = 3;
-            this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 51.85185F)));
-            this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 48.14815F)));
-            this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 531)));
-            this->tableLayoutPanel1->Size = System::Drawing::Size(864, 728);
+            this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 49.79757F)));
+            this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50.20243F)));
+            this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 343)));
+            this->tableLayoutPanel1->Size = System::Drawing::Size(1152, 591);
             this->tableLayoutPanel1->TabIndex = 1;
             // 
             // OutputGroupBox
             // 
             this->OutputGroupBox->Controls->Add(this->OutputTextBox);
             this->OutputGroupBox->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->OutputGroupBox->Location = System::Drawing::Point(3, 199);
+            this->OutputGroupBox->Location = System::Drawing::Point(4, 251);
+            this->OutputGroupBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->OutputGroupBox->Name = L"OutputGroupBox";
-            this->OutputGroupBox->Size = System::Drawing::Size(858, 526);
+            this->OutputGroupBox->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->OutputGroupBox->Size = System::Drawing::Size(1144, 336);
             this->OutputGroupBox->TabIndex = 1;
             this->OutputGroupBox->TabStop = false;
             this->OutputGroupBox->Text = L"Output";
@@ -164,21 +169,24 @@ namespace Project2
             // OutputTextBox
             // 
             this->OutputTextBox->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->OutputTextBox->Location = System::Drawing::Point(3, 18);
+            this->OutputTextBox->Location = System::Drawing::Point(4, 22);
+            this->OutputTextBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->OutputTextBox->Multiline = true;
             this->OutputTextBox->Name = L"OutputTextBox";
             this->OutputTextBox->ReadOnly = true;
             this->OutputTextBox->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-            this->OutputTextBox->Size = System::Drawing::Size(852, 505);
+            this->OutputTextBox->Size = System::Drawing::Size(1136, 310);
             this->OutputTextBox->TabIndex = 0;
             // 
             // EquationGroupBox
             // 
             this->EquationGroupBox->Controls->Add(this->EquationlistBox);
             this->EquationGroupBox->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->EquationGroupBox->Location = System::Drawing::Point(3, 3);
+            this->EquationGroupBox->Location = System::Drawing::Point(4, 4);
+            this->EquationGroupBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->EquationGroupBox->Name = L"EquationGroupBox";
-            this->EquationGroupBox->Size = System::Drawing::Size(858, 96);
+            this->EquationGroupBox->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->EquationGroupBox->Size = System::Drawing::Size(1144, 115);
             this->EquationGroupBox->TabIndex = 0;
             this->EquationGroupBox->TabStop = false;
             this->EquationGroupBox->Text = L"Equations";
@@ -187,10 +195,11 @@ namespace Project2
             // 
             this->EquationlistBox->Dock = System::Windows::Forms::DockStyle::Fill;
             this->EquationlistBox->FormattingEnabled = true;
-            this->EquationlistBox->ItemHeight = 12;
-            this->EquationlistBox->Location = System::Drawing::Point(3, 18);
+            this->EquationlistBox->ItemHeight = 15;
+            this->EquationlistBox->Location = System::Drawing::Point(4, 22);
+            this->EquationlistBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->EquationlistBox->Name = L"EquationlistBox";
-            this->EquationlistBox->Size = System::Drawing::Size(852, 75);
+            this->EquationlistBox->Size = System::Drawing::Size(1136, 89);
             this->EquationlistBox->TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -203,19 +212,21 @@ namespace Project2
             this->tableLayoutPanel2->Controls->Add(this->ComputeButton, 1, 0);
             this->tableLayoutPanel2->Controls->Add(this->ParameterGroupBox, 0, 0);
             this->tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->tableLayoutPanel2->Location = System::Drawing::Point(3, 105);
+            this->tableLayoutPanel2->Location = System::Drawing::Point(4, 127);
+            this->tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
             this->tableLayoutPanel2->RowCount = 1;
             this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
             this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-            this->tableLayoutPanel2->Size = System::Drawing::Size(858, 88);
+            this->tableLayoutPanel2->Size = System::Drawing::Size(1144, 116);
             this->tableLayoutPanel2->TabIndex = 3;
             // 
             // ComputeButton
             // 
-            this->ComputeButton->Location = System::Drawing::Point(795, 3);
+            this->ComputeButton->Location = System::Drawing::Point(1061, 4);
+            this->ComputeButton->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->ComputeButton->Name = L"ComputeButton";
-            this->ComputeButton->Size = System::Drawing::Size(60, 81);
+            this->ComputeButton->Size = System::Drawing::Size(79, 101);
             this->ComputeButton->TabIndex = 2;
             this->ComputeButton->Text = L"Compute";
             this->ComputeButton->UseVisualStyleBackColor = true;
@@ -225,9 +236,11 @@ namespace Project2
             // 
             this->ParameterGroupBox->Controls->Add(this->tableLayoutPanel3);
             this->ParameterGroupBox->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->ParameterGroupBox->Location = System::Drawing::Point(3, 3);
+            this->ParameterGroupBox->Location = System::Drawing::Point(4, 4);
+            this->ParameterGroupBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->ParameterGroupBox->Name = L"ParameterGroupBox";
-            this->ParameterGroupBox->Size = System::Drawing::Size(786, 82);
+            this->ParameterGroupBox->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->ParameterGroupBox->Size = System::Drawing::Size(1049, 108);
             this->ParameterGroupBox->TabIndex = 0;
             this->ParameterGroupBox->TabStop = false;
             this->ParameterGroupBox->Text = L"Parameter";
@@ -236,11 +249,11 @@ namespace Project2
             // 
             this->tableLayoutPanel3->ColumnCount = 3;
             this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-                10.28708F)));
+                13.33333F)));
             this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-                89.71292F)));
+                86.66666F)));
             this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-                385)));
+                515)));
             this->tableLayoutPanel3->Controls->Add(this->label1, 0, 0);
             this->tableLayoutPanel3->Controls->Add(this->label2, 0, 1);
             this->tableLayoutPanel3->Controls->Add(this->InitialTextBox, 1, 0);
@@ -248,21 +261,23 @@ namespace Project2
             this->tableLayoutPanel3->Controls->Add(this->RangeRightTextBox, 2, 1);
             this->tableLayoutPanel3->Controls->Add(this->tableLayoutPanel4, 2, 0);
             this->tableLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->tableLayoutPanel3->Location = System::Drawing::Point(3, 18);
+            this->tableLayoutPanel3->Location = System::Drawing::Point(4, 22);
+            this->tableLayoutPanel3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->tableLayoutPanel3->Name = L"tableLayoutPanel3";
             this->tableLayoutPanel3->RowCount = 2;
             this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
             this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-            this->tableLayoutPanel3->Size = System::Drawing::Size(780, 61);
+            this->tableLayoutPanel3->Size = System::Drawing::Size(1041, 82);
             this->tableLayoutPanel3->TabIndex = 0;
             // 
             // label1
             // 
             this->label1->Anchor = System::Windows::Forms::AnchorStyles::Left;
             this->label1->AutoSize = true;
-            this->label1->Location = System::Drawing::Point(3, 9);
+            this->label1->Location = System::Drawing::Point(4, 13);
+            this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(32, 12);
+            this->label1->Size = System::Drawing::Size(41, 15);
             this->label1->TabIndex = 0;
             this->label1->Text = L"Initial";
             // 
@@ -270,34 +285,38 @@ namespace Project2
             // 
             this->label2->Anchor = System::Windows::Forms::AnchorStyles::Left;
             this->label2->AutoSize = true;
-            this->label2->Location = System::Drawing::Point(3, 33);
+            this->label2->Location = System::Drawing::Point(4, 54);
+            this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(30, 24);
+            this->label2->Size = System::Drawing::Size(42, 15);
             this->label2->TabIndex = 1;
             this->label2->Text = L"Range";
             // 
             // InitialTextBox
             // 
             this->InitialTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
-            this->InitialTextBox->Location = System::Drawing::Point(43, 4);
+            this->InitialTextBox->Location = System::Drawing::Point(74, 8);
+            this->InitialTextBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->InitialTextBox->Name = L"InitialTextBox";
-            this->InitialTextBox->Size = System::Drawing::Size(348, 22);
+            this->InitialTextBox->Size = System::Drawing::Size(447, 25);
             this->InitialTextBox->TabIndex = 2;
             // 
             // RangeLeftTextBox
             // 
             this->RangeLeftTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
-            this->RangeLeftTextBox->Location = System::Drawing::Point(43, 34);
+            this->RangeLeftTextBox->Location = System::Drawing::Point(74, 49);
+            this->RangeLeftTextBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->RangeLeftTextBox->Name = L"RangeLeftTextBox";
-            this->RangeLeftTextBox->Size = System::Drawing::Size(348, 22);
+            this->RangeLeftTextBox->Size = System::Drawing::Size(447, 25);
             this->RangeLeftTextBox->TabIndex = 3;
             // 
             // RangeRightTextBox
             // 
             this->RangeRightTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
-            this->RangeRightTextBox->Location = System::Drawing::Point(397, 34);
+            this->RangeRightTextBox->Location = System::Drawing::Point(529, 49);
+            this->RangeRightTextBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->RangeRightTextBox->Name = L"RangeRightTextBox";
-            this->RangeRightTextBox->Size = System::Drawing::Size(380, 22);
+            this->RangeRightTextBox->Size = System::Drawing::Size(508, 25);
             this->RangeRightTextBox->TabIndex = 4;
             // 
             // tableLayoutPanel4
@@ -310,21 +329,23 @@ namespace Project2
             this->tableLayoutPanel4->Controls->Add(this->label3, 0, 0);
             this->tableLayoutPanel4->Controls->Add(this->AlgorithmComboBox, 1, 0);
             this->tableLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->tableLayoutPanel4->Location = System::Drawing::Point(397, 3);
+            this->tableLayoutPanel4->Location = System::Drawing::Point(529, 4);
+            this->tableLayoutPanel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->tableLayoutPanel4->Name = L"tableLayoutPanel4";
             this->tableLayoutPanel4->RowCount = 1;
             this->tableLayoutPanel4->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
             this->tableLayoutPanel4->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-            this->tableLayoutPanel4->Size = System::Drawing::Size(380, 24);
+            this->tableLayoutPanel4->Size = System::Drawing::Size(508, 33);
             this->tableLayoutPanel4->TabIndex = 5;
             // 
             // label3
             // 
             this->label3->Anchor = System::Windows::Forms::AnchorStyles::Left;
             this->label3->AutoSize = true;
-            this->label3->Location = System::Drawing::Point(3, 6);
+            this->label3->Location = System::Drawing::Point(4, 9);
+            this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->label3->Name = L"label3";
-            this->label3->Size = System::Drawing::Size(53, 12);
+            this->label3->Size = System::Drawing::Size(66, 15);
             this->label3->TabIndex = 0;
             this->label3->Text = L"Algorithm";
             // 
@@ -337,19 +358,21 @@ namespace Project2
                 L"Powell\'s Method", L"Newton Method",
                     L"Steep Descent Algorithm", L"Quasi-Newton Method", L"Conjugate Gradient Method"
             });
-            this->AlgorithmComboBox->Location = System::Drawing::Point(65, 3);
+            this->AlgorithmComboBox->Location = System::Drawing::Point(88, 4);
+            this->AlgorithmComboBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->AlgorithmComboBox->Name = L"AlgorithmComboBox";
-            this->AlgorithmComboBox->Size = System::Drawing::Size(312, 20);
+            this->AlgorithmComboBox->Size = System::Drawing::Size(416, 23);
             this->AlgorithmComboBox->TabIndex = 1;
             // 
             // MyForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(864, 752);
+            this->ClientSize = System::Drawing::Size(1152, 618);
             this->Controls->Add(this->tableLayoutPanel1);
             this->Controls->Add(this->menuStrip1);
             this->MainMenuStrip = this->menuStrip1;
+            this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->Name = L"MyForm";
             this->Text = L"Optimization";
             this->menuStrip1->ResumeLayout(false);
