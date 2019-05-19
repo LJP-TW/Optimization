@@ -1,8 +1,12 @@
+#include <sstream>
+#include <iomanip>
 #include "Matrix.h"
 
 #ifdef _DEBUG
 #include <iostream>
 #endif
+
+using namespace std;
 
 constexpr int THRESHOLD = 10E-12;
 
@@ -15,6 +19,67 @@ Matrix::Matrix(Vector v)
     // Initial as column vector
     this->Data.push_back(v.Data);
     *this = this->trans();
+}
+
+string Matrix::output()
+{
+    stringstream stream;
+    string result;
+
+    stream << "[";
+    for (int i = 0; i < Data.size(); ++i)
+    {
+        for (int j = 0; j < Data[i].size(); ++j)
+        {
+            stream << Data[i][j];
+            if (j != Data[i].size() - 1)
+            {
+                stream << ", ";
+            }
+        }
+        stream << "\n";
+    }
+    stream << "]";
+    result = stream.str();
+    return result;
+}
+
+string Matrix::output(int precision)
+{
+    stringstream stream;
+    string result;
+
+    stream << "[";
+    for (int i = 0; i < Data.size(); ++i)
+    {
+        for (int j = 0; j < Data[i].size(); ++j)
+        {
+            stream << fixed << setprecision(precision) << Data[i][j];
+            if (j != Data[i].size() - 1)
+            {
+                stream << ", ";
+            }
+        }
+        stream << "\n";
+    }
+    stream << "]";
+    result = stream.str();
+    return result;
+}
+
+Matrix Matrix::operator -()
+{
+    Matrix result = *this;
+
+    for (int i = 0; i < result.Data.size(); ++i)
+    {
+        for (int j = 0; j < result.Data[0].size(); ++j)
+        {
+            result.Data[i][j] = -result.Data[i][j];
+        }
+    }
+
+    return result;
 }
 
 Matrix Matrix::operator+(const Matrix & m)
@@ -88,6 +153,21 @@ Matrix Matrix::operator*(const Matrix & m)
             rowVectorTemp.push_back(sumTemp);
         }
         result.Data.push_back(rowVectorTemp);
+    }
+
+    return result;
+}
+
+Matrix Matrix::operator *(double m)
+{
+    Matrix result = *this;
+
+    for (unsigned int y = 0; y < result.Data.size(); ++y)
+    {
+        for (unsigned int x = 0; x < result.Data[0].size(); ++x)
+        {
+            result.Data[y][x] *= m;
+        }
     }
 
     return result;
