@@ -44,13 +44,13 @@ System::Void MyForm::ComputeButton_Click(System::Object^  sender, System::EventA
         cout << "right range : " << rangeRight.output() << endl;
         cout << "method: " << AlgorithmComboBox->SelectedIndex << endl;
 
-        // Vector test = Vector(initial);
-        // Vector testOrder[2];
-        // testOrder[0] = Vector("1");
-        // testOrder[1] = Vector("2");
-        // cout << "f(IV): " << equation.evalue(test) << endl; 
+        Vector test = Vector(initial);
+        Vector testOrder[2];
+        testOrder[0] = Vector("1");
+        testOrder[1] = Vector("2");
+        cout << "f(IV): " << equation.evalue(test) << endl; 
         // cout << "df(IV)/dx       : " << equation.diff(test, testOrder[0]) << endl;
-        // cout << "df(IV)/dx^2     : " << equation.diff(test, testOrder[1]) << endl;
+        cout << "df(IV)/dx^2     : " << equation.diff(test, testOrder[1]) << endl;
         // 
         // Vector testDirection[3];
         // testDirection[0] = Vector("1");

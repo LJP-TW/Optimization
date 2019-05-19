@@ -380,7 +380,12 @@ Vector Equation::getGradient(Vector x)
     // Compute first order at x with respect to every variable
     for (int i = 0; i < firstOrders.size(); ++i)
     {
+#ifdef _DEBUG
+        double debug = diff(x, firstOrders[i]);
+        result.push_back(debug);
+#else
         result.push_back(diff(x, firstOrders[i]));
+#endif
     }
 
     return result;
