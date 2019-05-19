@@ -13,6 +13,13 @@ public:
     std::string Name;
     std::vector<std::vector<double>> Data;
 
+    std::string output();
+    // set precision
+    std::string output(int precision);
+
+    // Negative sign
+    Matrix operator -();
+
     /*
      * Return the result of A+B, which A is this matrix, B is m
      * might throw
@@ -33,6 +40,9 @@ public:
      * - MULTIPLICATION_DIMENSION_ERROR
      */
     Matrix operator *(const Matrix& m);
+
+    // Scalar
+    Matrix operator *(double m);
 
     /*
      * Return the solution of Ax=B, which A is this matrix, B is m
