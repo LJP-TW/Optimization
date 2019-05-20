@@ -106,23 +106,104 @@ System::Void MyForm::SteepDescent(Equation& equation, Vector initial, Vector ran
     Vector x = initial, tempX;
     Vector h = equation.getGradient(initial);
 
-    while (abs(h.norm()) > THRESHOLD)
+    // F(x) and F(x - 1)
+    double e_now = equation.evalue(x);
+    double e_pre = e_now - 1;
+
+    bool isEdge = false;
+
+    while (!isEdge && abs(e_now - e_pre) > THRESHOLD)
     {
+        double tempD, step;
+
+        e_pre = e_now;
+
         // Step 1. if f'(x[i]) = 0 stop else compute search direction h[i] = -f'(x[i])
         h = -h;
 
         // Step 2. compute the step-size a
-        a = (h * h)[0] / (Matrix(h).trans() * equation.getHessian(x) * Matrix(h)).Data[0][0];
-        
+        // a = (h * h)[0] / (Matrix(h).trans() * equation.getHessian(x) * Matrix(h)).Data[0][0];
+        step = a = 1;
         tempX = x + Vector(a) * h;
-        while (equation.evalue(tempX) != equation.evalue(tempX))
+        while (!(rangeLeft <= tempX) || !(rangeRight >= tempX))
         {
-            a *= 0.95;
-            tempX = x + Vector(a) * h;
-        }
+            a -= step;
+            step *= 0.1;
+            a += step;
 
+            tempX = x + Vector(a) * h;
+            if (step < 1E-6)
+            {
+                isEdge = true;
+                a -= step;
+                break;
+            }
+        }
+        while (!isEdge && (tempD = equation.evalue(tempX)) < e_now)
+        {
+            e_now = tempD;
+            a += step;
+            tempX = x + Vector(a) * h;
+            while (!(rangeLeft <= tempX) || !(rangeRight >= tempX))
+            {
+                a -= step;
+                step *= 0.1;
+                a += step;
+
+                tempX = x + Vector(a) * h;
+                if (step < 1E-6)
+                {
+                    isEdge = true;
+                    a -= step;
+                    break;
+                }
+            }
+        }
+        while (!isEdge && ((tempD = equation.evalue(tempX)) - e_now > THRESHOLD || tempD != tempD))
+        {
+            a -= step;
+            step *= 0.1;
+            a += step;
+            tempX = x + Vector(a) * h;
+            while (!(rangeLeft <= tempX) || !(rangeRight >= tempX))
+            {
+                a -= step;
+                step *= 0.1;
+                a += step;
+
+                tempX = x + Vector(a) * h;
+                if (step < 1E-6)
+                {
+                    isEdge = true;
+                    a -= step;
+                    break;
+                }
+            }
+            while (!isEdge && (tempD = equation.evalue(tempX)) < e_now)
+            {
+                e_now = tempD;
+                a += step;
+                tempX = x + Vector(a) * h;
+                while (!(rangeLeft <= tempX) || !(rangeRight >= tempX))
+                {
+                    a -= step;
+                    step *= 0.1;
+                    a += step;
+
+                    tempX = x + Vector(a) * h;
+                    if (step < 1E-6)
+                    {
+                        isEdge = true;
+                        a -= step;
+                        break;
+                    }
+                }
+            }
+        }
+        a -= step;
+        
         // Step 3. set x[i + 1] = x[i] + a * h[i], go to step 1.
-        x = tempX;
+        x = x + Vector(a) * h;
 
         h = equation.getGradient(x);
 
@@ -189,7 +270,7 @@ System::Void MyForm::QuasiNewton(Equation& equation, Vector initial, Vector rang
 {
     // Set k = 0, x[0] = initial, F[0] = I
     int k = 0;
-    Vector x = initial, g = equation.getGradient(initial), d, dx, dg, temp;
+    Vector x = initial, g = equation.getGradient(initial), d, dx, dg, temp, tempX;
     Matrix F, dx_r, dx_c, dg_r, dg_c;
     double a;
 
@@ -219,20 +300,24 @@ System::Void MyForm::QuasiNewton(Equation& equation, Vector initial, Vector rang
         // Set x[k + 1] = x[k] + a[k] * d[k]
         // Set delta_g[k] = g[k + 1] - g[k]
         step = a = 1;
-        while ((tempD = equation.evalue(x + Vector(a) * d)) < e_now)
+        tempX = x + Vector(a) * d;
+        while ((tempD = equation.evalue(tempX)) < e_now)
         {
             e_now = tempD;
             a += step;
+            tempX = x + Vector(a) * d;
         }
-        while ((tempD = equation.evalue(x + Vector(a) * d)) - e_now > THRESHOLD || tempD != tempD)
+        while ((tempD = equation.evalue(tempX)) - e_now > THRESHOLD || tempD != tempD)
         {
             a -= step;
             step *= 0.1;
             a += step;
-            while ((tempD = equation.evalue(x + Vector(a) * d)) < e_now)
+            tempX = x + Vector(a) * d;
+            while ((tempD = equation.evalue(tempX)) < e_now)
             {
                 e_now = tempD;
                 a += step;
+                tempX = x + Vector(a) * d;
             }
         }
         a -= step;
