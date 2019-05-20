@@ -8,6 +8,8 @@
 
 using namespace Project2;
 using namespace std;
+using namespace System;
+using namespace System::IO;
 
 enum OPTIMIZATION_METHOD {
     POWELL,
@@ -93,6 +95,12 @@ System::Void MyForm::printToOutputTextBox(std::stringstream& ss)
 System::Void MyForm::loadEquationsToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)
 {
     openFileDialog1->ShowDialog();
+}
+
+System::Void MyForm::exportOutputToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)
+{
+    if(saveFileDialog1->ShowDialog() == ::DialogResult::OK)
+        File::WriteAllText(saveFileDialog1->FileName, OutputTextBox->Text);
 }
 
 System::Void MyForm::openFileDialog1_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e)
