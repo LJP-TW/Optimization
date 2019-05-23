@@ -218,14 +218,22 @@ double Equation::getMinima(Vector init, Vector rangeLeft, Vector rangeRight, Vec
     double leftD, rightD, innerD_l, innerD_r, tempD;
 
     // Infinity
-    tempD = 1E128;
+    tempD = -1E128;
 
     // Initial left point
     tempV = rangeLeft - init;
     for (int i = 0; i < tempV.Data.size(); ++i)
     {
-        if (direction.Data[i] != 0 && tempV.Data[i] / direction.Data[i] < tempD)
-            tempD = tempV.Data[i] / direction.Data[i];
+        // if (direction.Data[i] != 0 && tempV.Data[i] / direction.Data[i] < tempD)
+        //     tempD = tempV.Data[i] / direction.Data[i];
+
+        if (direction.Data[i] != 0)
+        {
+            if ((tempD == -1E128)
+                || (direction.Data[i] > 0 && tempV.Data[i] / direction.Data[i] > tempD)
+                || (direction.Data[i] < 0 && tempV.Data[i] / direction.Data[i] < tempD))
+                tempD = tempV.Data[i] / direction.Data[i];
+        }
     }
 
     leftV = init + Vector(tempD) * direction;
@@ -238,8 +246,16 @@ double Equation::getMinima(Vector init, Vector rangeLeft, Vector rangeRight, Vec
     tempV = rangeRight - init;
     for (int i = 0; i < tempV.Data.size(); ++i)
     {
-        if (direction.Data[i] != 0 && tempV.Data[i] / direction.Data[i] < tempD)
-            tempD = tempV.Data[i] / direction.Data[i];
+        // if (direction.Data[i] != 0 && tempV.Data[i] / direction.Data[i] < tempD)
+        //    tempD = tempV.Data[i] / direction.Data[i];
+
+        if (direction.Data[i] != 0)
+        {
+            if ((tempD == 1E128)
+                || (direction.Data[i] > 0 && tempV.Data[i] / direction.Data[i] < tempD)
+                || (direction.Data[i] < 0 && tempV.Data[i] / direction.Data[i] > tempD))
+                tempD = tempV.Data[i] / direction.Data[i];
+        }
     }
 
     rightV = init + Vector(tempD) * direction;
