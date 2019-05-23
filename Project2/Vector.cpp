@@ -152,6 +152,28 @@ Vector Vector::operator*(const Vector & v)
     return result;
 }
 
+bool Vector::operator <=(const Vector& v)
+{
+    for (int i = 0; i < this->Data.size(); ++i)
+    {
+        if (this->Data[i] > v.Data[i])
+            return false;
+    }
+
+    return true;
+}
+
+bool Vector::operator >=(const Vector& v)
+{
+    for (int i = 0; i < this->Data.size(); ++i)
+    {
+        if (this->Data[i] < v.Data[i])
+            return false;
+    }
+
+    return true;
+}
+
 double Vector::norm() const
 {
     double mag = 0.0;

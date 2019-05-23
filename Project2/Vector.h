@@ -53,6 +53,9 @@ public:
      */
     Vector operator *(const Vector& v);
 
+    bool operator <=(const Vector& v);
+    bool operator >=(const Vector& v);
+
     double norm() const;
 };
 
